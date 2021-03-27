@@ -1,0 +1,33 @@
+var canvasWidth = 700;
+var canvasHeight = 700;
+
+let black, white, graycircle50, graycircle100, graycircle150, illusion1, illusion2, illusion3, illusion4, illusion5, illusion6, stars1, stars2, stars3, stars4, stars5, stars6, wood1, wood2, wood3, wood4, wood5, wood6
+
+function preload() {
+  oulu1 = loadImage('src/assets/oulu1.bmp');
+  oulu2 = loadImage('src/assets/oulu2.bmp');
+  oulu3 = loadImage('src/assets/oulu3.bmp');
+  stars2 = loadImage('src/assets/stars2.png');
+  stars4 = loadImage('src/assets/stars4.png');
+  stars6 = loadImage('src/assets/stars6.png');  
+  wood3 = loadImage('src/assets/wood3.png');
+  wood4 = loadImage('src/assets/wood4.png');
+  wood6 = loadImage('src/assets/wood6.png');
+  graycircle50 = loadImage('src/assets/graycrop50.png');
+  graycircle70 = loadImage('src/assets/graycrop70.png');
+  graycircle80 = loadImage('src/assets/graycrop80.png');
+  graycircle100 = loadImage('src/assets/graycrop100.png');
+  graycircle110 = loadImage('src/assets/graycrop110.png');
+  graycircle120 = loadImage('src/assets/graycrop120.png');
+  graycircle150 = loadImage('src/assets/graycrop150.png');
+  black = loadImage('src/assets/black.png');
+  white = loadImage('src/assets/white.png');
+}
+
+function setup()
+{
+  createCanvas(canvasWidth, canvasHeight);
+    var mgr = new SceneManager();
+    mgr.wire();
+    mgr.showScene( Intro );
+}
