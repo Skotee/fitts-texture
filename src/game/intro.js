@@ -1,6 +1,19 @@
 function Intro() {
   let ball = { x: width / 2, y: height / 1.5, size: 150 };
-  let flag=false;
+  let flag = false;
+  let slider1;
+  let button1;
+  let checkbox1;
+  let radio1;
+  let select1;
+  let entry1;
+
+  // this.setup = function() {
+  //   let inp = createInput('');
+  //   inp.position(0, 0);
+  //   inp.size(100);
+  //   inp.input(myInputEvent);
+  // };
 
   this.draw = function() {
     background('white'), angleMode(DEGREES);
@@ -13,6 +26,10 @@ function Intro() {
     }
   };
 
+  function myInputEvent() {
+    console.log('you are typing: ', this.value());
+  }
+
   function drawIntroScreen() {
     textSize(30);
     textAlign(CENTER);
@@ -21,21 +38,28 @@ function Intro() {
     textSize(20);
     fill('black');
 
+    // button = createButton('submit');
+    // button.position(input.x + input.width, 65);
+    // button.mousePressed(greet);
+
+    // greeting = createElement('h2', 'what is your name?');
+    // greeting.position(20, 5);
+
+    // textAlign(CENTER);
+    // textSize(50);
+    // const name = input.value();
+    // greeting.html('Cześć ' + name + '!');
+    // input.value('');
+
+    text('W tym eksperymencie czekają na ciebie plansze, w każdej z nich musisz', width / 2, 100);
     text(
-      'W tym eksperymencie czekają na ciebie 34 rundy, w każdej z nich',
-      width / 2,
-      100
-    );
-    text(
-      'musisz kliknąć kursorem myszy na białym przycisk znajdujący się pośrodku',
+      'kliknąć kursorem myszy na szary przycisk znajdujący się na obwodzie koła,',
       width / 2,
       130
     );
-    text('ekranu, a następnie możliwie jak najszybciej na szary okrąg,', width / 2, 160);
-    text('który pokaże się natychmiastowo po kliknięciu na wspomniany biały', width / 2, 190);
+    text('a następnie możliwie jak najszybciej na następny przycisk', width / 2, 160);
+    text('', width / 2, 190);
     fill('green');
-    text('Eksperyment trwa łącznie około pół minuty', width / 2, 280);
-    fill('orange');
     text('Proszę o użycie myszki do realizacji tego eksperymentu', width / 2, 320);
 
     var sizeFactor = 1 + cos(2 * frameCount) * 0.3;

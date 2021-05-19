@@ -1,4 +1,43 @@
 function Game() {
+  const STEP_1 = 8;
+  const STEP_2 = 26;
+  const STEP_3 = 41;
+  const STEP_4 = 56;
+  const STEP_5 = 71;
+  const STEP_6 = 86;
+  const STEP_7 = 101;
+  const STEP_8 = 116;
+  const STEP_9 = 131;
+  const STEP_10 = 146;
+
+  const BACKGROUND_00 = black;
+  const BACKGROUND_01 = black;
+  const BACKGROUND_02 = white;
+  const BACKGROUND_03 = black;
+  const BACKGROUND_04 = white;
+  const BACKGROUND_05 = white;
+  const BACKGROUND_06 = white;
+  const BACKGROUND_07 = black;
+  const BACKGROUND_08 = black;
+  const BACKGROUND_09 = white;
+
+  const BACKGROUND_1 = stars2;
+  const BACKGROUND_2 = stars4;
+  const BACKGROUND_3 = stars6;
+  const BACKGROUND_4 = oulu1;
+  const BACKGROUND_5 = oulu2;
+  const BACKGROUND_6 = oulu3;
+  const BACKGROUND_7 = wood3;
+  const BACKGROUND_8 = wood4;
+  const BACKGROUND_9 = wood6;
+
+  const PREDEFINED_DIAMETER_1 = 50;
+  const PREDEFINED_DIAMETER_2 = 70;
+  const PREDEFINED_DIAMETER_3 = 80;
+  const PREDEFINED_DIAMETER_4 = 100;
+  const PREDEFINED_DIAMETER_5 = 110;
+  const PREDEFINED_DIAMETER_6 = 120;
+  const PREDEFINED_DIAMETER_7 = 150;
   var me = this;
   let startTime = 0;
   let timeTaken = 0;
@@ -6,7 +45,15 @@ function Game() {
   let backgrounds = [];
   let lapTimes = [];
   let distances = [];
-  const predefinedDiameters = [50, 70, 80, 100, 110, 120, 150];
+  const predefinedDiameters = [
+    PREDEFINED_DIAMETER_1,
+    PREDEFINED_DIAMETER_2,
+    PREDEFINED_DIAMETER_3,
+    PREDEFINED_DIAMETER_4,
+    PREDEFINED_DIAMETER_5,
+    PREDEFINED_DIAMETER_6,
+    PREDEFINED_DIAMETER_7,
+  ];
   let selectedPredefinedDiameters = [];
   let filenames = [];
   let diameters = [];
@@ -169,7 +216,7 @@ function Game() {
   function initGame() {
     getDiameterFromArray();
 
-    for (let i = 1; i < 147; i++) {
+    for (let i = 1; i < STEP_10 + 1; i++) {
       bubbles[i - 1] = new Bubble(
         i,
         getRandomIntInclusive(0, 360),
@@ -178,49 +225,58 @@ function Game() {
       );
     }
 
-    backgrounds[0] = black;
-    backgrounds[1] = black;
-    backgrounds[2] = white;
-    backgrounds[3] = black;
-    backgrounds[4] = white;
-    backgrounds[5] = white;
-    backgrounds[6] = white;
-    backgrounds[7] = black;
-    backgrounds[8] = black;
-    backgrounds[9] = white;
+    backgrounds[0] = BACKGROUND_00;
+    backgrounds[1] = BACKGROUND_01;
+    backgrounds[2] = BACKGROUND_02;
+    backgrounds[3] = BACKGROUND_03;
+    backgrounds[4] = BACKGROUND_04;
+    backgrounds[5] = BACKGROUND_05;
+    backgrounds[6] = BACKGROUND_06;
+    backgrounds[7] = BACKGROUND_07;
+    backgrounds[8] = BACKGROUND_08;
+    backgrounds[9] = BACKGROUND_09;
 
-    for (let i = 10; i < 26; i++) {
-      backgrounds[i] = stars2;
+    for (let i = STEP_1; i < STEP_2; i++) {
+      backgrounds[i] = BACKGROUND_1;
     }
-    for (let i = 26; i < 41; i++) {
-      backgrounds[i] = stars4;
+    for (let i = STEP_2; i < STEP_3; i++) {
+      backgrounds[i] = BACKGROUND_2;
     }
-    for (let i = 41; i < 56; i++) {
-      backgrounds[i] = stars6;
+    for (let i = STEP_3; i < STEP_4; i++) {
+      backgrounds[i] = BACKGROUND_3;
     }
-    for (let i = 56; i < 71; i++) {
-      backgrounds[i] = oulu1;
+    for (let i = STEP_4; i < STEP_5; i++) {
+      backgrounds[i] = BACKGROUND_4;
     }
-    for (let i = 71; i < 86; i++) {
-      backgrounds[i] = oulu2;
+    for (let i = STEP_5; i < STEP_6; i++) {
+      backgrounds[i] = BACKGROUND_5;
     }
-    for (let i = 86; i < 101; i++) {
-      backgrounds[i] = oulu3;
+    for (let i = STEP_6; i < STEP_7; i++) {
+      backgrounds[i] = BACKGROUND_6;
     }
-    for (let i = 101; i < 116; i++) {
-      backgrounds[i] = wood3;
+    for (let i = STEP_7; i < STEP_8; i++) {
+      backgrounds[i] = BACKGROUND_7;
     }
-    for (let i = 116; i < 131; i++) {
-      backgrounds[i] = wood4;
+    for (let i = STEP_8; i < STEP_9; i++) {
+      backgrounds[i] = BACKGROUND_8;
     }
-    for (let i = 131; i < 146; i++) {
-      backgrounds[i] = wood6;
+    for (let i = STEP_9; i < STEP_10; i++) {
+      backgrounds[i] = BACKGROUND_9;
     }
     lapTimes = [];
     console.log(bubbles);
 
     for (let i = 0; i < bubbles.length - 1; i++) {
-      console.log(i+" "+(dist(bubbles[i].centerX , bubbles[i].centerY, bubbles[i+1].centerX, bubbles[i+1].centerY)).toFixed(2));
+      console.log(
+        i +
+          ' ' +
+          dist(
+            bubbles[i].centerX,
+            bubbles[i].centerY,
+            bubbles[i + 1].centerX,
+            bubbles[i + 1].centerY
+          ).toFixed(2)
+      );
       distances.push(
         (
           dist(
