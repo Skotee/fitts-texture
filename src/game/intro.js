@@ -1,6 +1,6 @@
 function Intro() {
   let ball = { x: width / 2, y: height / 1.5, size: 150 };
-  let flag=false;
+  let flag = false;
   let slider1;
   let button1;
   let checkbox1;
@@ -36,21 +36,17 @@ function Intro() {
     // button = createButton('submit');
     // button.position(input.x + input.width, 65);
     // button.mousePressed(greet);
-  
+
     // greeting = createElement('h2', 'what is your name?');
     // greeting.position(20, 5);
-  
+
     // textAlign(CENTER);
     // textSize(50);
     // const name = input.value();
     // greeting.html('Cześć ' + name + '!');
     // input.value('');
 
-    text(
-      'W tym eksperymencie czekają na ciebie plansze, w każdej z nich musisz',
-      width / 2,
-      100
-    );
+    text('W tym eksperymencie czekają na ciebie plansze, w każdej z nich musisz', width / 2, 100);
     text(
       'kliknąć kursorem myszy na szary przycisk znajdujący się na obwodzie koła,',
       width / 2,

@@ -47,27 +47,23 @@ function Game() {
   // let gender = document.querySelector('input[name="gender"]').value;
   let screen = document.querySelector('#screen');
   let screenDistance = document.querySelector('#distance');
-//   let quiz = document.querySelector('#quiz-template');
+  //   let quiz = document.querySelector('#quiz-template');
 
-// console.log('quiz-template', quiz);
-// let age = quiz.content.querySelector('#age').value
+  // console.log('quiz-template', quiz);
+  // let age = quiz.content.querySelector('#age').value
 
-
-
-
-  
-// const addAge = (ev) => {
-//   ev.preventDefault();
-//   let age = {
-//     age1: document.getElementById('age').value
-//   }
-//   arguments.push(age);
-//   console.warn('add', {ages});
-// }
-// document.addEventListener('DOOOOM', () => {
-//   document.getElementById('startGameButton', addAge);
-// })
-// console.log('age', age);
+  // const addAge = (ev) => {
+  //   ev.preventDefault();
+  //   let age = {
+  //     age1: document.getElementById('age').value
+  //   }
+  //   arguments.push(age);
+  //   console.warn('add', {ages});
+  // }
+  // document.addEventListener('DOOOOM', () => {
+  //   document.getElementById('startGameButton', addAge);
+  // })
+  // console.log('age', age);
   let lapTimes = [];
   let distances = [];
   const predefinedDiameters = [
@@ -236,7 +232,9 @@ function Game() {
         link.remove(); //removing the link after the download
       }
 
-      rows = [[ids, lapTimes, distances, diameters, coordinates, age, screen, screenDistance, fname]];
+      rows = [
+        [ids, lapTimes, distances, diameters, coordinates, age, screen, screenDistance, fname],
+      ];
 
       downloadExcel();
       // let csvContent = "data:text/csv;charset=utf-8,"

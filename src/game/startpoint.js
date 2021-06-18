@@ -1,7 +1,29 @@
 var canvasWidth = 700;
 var canvasHeight = 700;
 
-let black, white, graycircle50, graycircle100, graycircle150, illusion1, illusion2, illusion3, illusion4, illusion5, illusion6, stars1, stars2, stars3, stars4, stars5, stars6, wood1, wood2, wood3, wood4, wood5, wood6
+let black,
+  white,
+  graycircle50,
+  graycircle100,
+  graycircle150,
+  illusion1,
+  illusion2,
+  illusion3,
+  illusion4,
+  illusion5,
+  illusion6,
+  stars1,
+  stars2,
+  stars3,
+  stars4,
+  stars5,
+  stars6,
+  wood1,
+  wood2,
+  wood3,
+  wood4,
+  wood5,
+  wood6;
 
 function preload() {
   oulu1 = loadImage('src/assets/oulu1.bmp');
@@ -9,7 +31,7 @@ function preload() {
   oulu3 = loadImage('src/assets/oulu3.bmp');
   stars2 = loadImage('src/assets/stars2.png');
   stars4 = loadImage('src/assets/stars4.png');
-  stars6 = loadImage('src/assets/stars6.png');  
+  stars6 = loadImage('src/assets/stars6.png');
   wood3 = loadImage('src/assets/wood3.png');
   wood4 = loadImage('src/assets/wood4.png');
   wood6 = loadImage('src/assets/wood6.png');
@@ -26,13 +48,13 @@ function preload() {
 
 function test() {
   event.preventDefault();
-  window.age = document.querySelector('#age').value
-  window.fname = document.querySelector('#fname').value
-  window.screen = document.querySelector('#screen').value
-  window.distance = document.querySelector('#distance').value
-  window.illnesses = document.getElementsByName('#illnesses').value
-  window.drugs = document.getElementsByName('drugs').value
-  window.gender = document.getElementsByName('gender').value
+  window.age = document.querySelector('#age').value;
+  window.fname = document.querySelector('#fname').value;
+  window.screen = document.querySelector('#screen').value;
+  window.distance = document.querySelector('#distance').value;
+  window.illnesses = document.getElementsByName('#illnesses').value;
+  window.drugs = document.getElementsByName('drugs').value;
+  window.gender = document.getElementsByName('gender').value;
 
   console.log('age', age);
   console.log('fname', fname);
@@ -44,11 +66,10 @@ function test() {
   createCanvas(canvasWidth, canvasHeight);
   var mgr = new SceneManager();
   mgr.wire();
-  mgr.showScene( Intro );
+  mgr.showScene(Intro);
 }
 
-function setup()
-{
+function setup() {
   const appScreen = document.querySelector('#pokequiz-app');
   const quizTemplate = document.getElementById('quiz-template');
   appScreen.innerHTML = quizTemplate.innerHTML;
