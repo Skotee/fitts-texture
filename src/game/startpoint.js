@@ -24,10 +24,32 @@ function preload() {
   white = loadImage('src/assets/white.png');
 }
 
+function test() {
+  event.preventDefault();
+  window.age = document.querySelector('#age').value
+  window.fname = document.querySelector('#fname').value
+  window.screen = document.querySelector('#screen').value
+  window.distance = document.querySelector('#distance').value
+  window.illnesses = document.getElementsByName('#illnesses').value
+  window.drugs = document.getElementsByName('drugs').value
+  window.gender = document.getElementsByName('gender').value
+
+  console.log('age', age);
+  console.log('fname', fname);
+  console.log('screen', screen);
+  console.log('distance', distance);
+  console.log('illnesses', illnesses);
+  console.log('drugs', drugs);
+  console.log('gender', gender);
+  createCanvas(canvasWidth, canvasHeight);
+  var mgr = new SceneManager();
+  mgr.wire();
+  mgr.showScene( Intro );
+}
+
 function setup()
 {
-  createCanvas(canvasWidth, canvasHeight);
-    var mgr = new SceneManager();
-    mgr.wire();
-    mgr.showScene( Intro );
+  const appScreen = document.querySelector('#pokequiz-app');
+  const quizTemplate = document.getElementById('quiz-template');
+  appScreen.innerHTML = quizTemplate.innerHTML;
 }

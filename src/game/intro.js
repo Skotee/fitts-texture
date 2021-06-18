@@ -1,6 +1,6 @@
 function Intro() {
   let ball = { x: width / 2, y: height / 1.5, size: 150 };
-  let flag = false;
+  let flag=false;
   let slider1;
   let button1;
   let checkbox1;
@@ -8,16 +8,15 @@ function Intro() {
   let select1;
   let entry1;
 
-  // this.setup = function() {
-  //   let inp = createInput('');
-  //   inp.position(0, 0);
-  //   inp.size(100);
-  //   inp.input(myInputEvent);
-  // };
-
   this.draw = function() {
     background('white'), angleMode(DEGREES);
     drawIntroScreen();
+  };
+
+  this.setup = function() {
+    const appScreen = document.querySelector('#pokequiz-app');
+    const disTemplate = document.getElementById('dis');
+    appScreen.innerHTML = disTemplate.innerHTML;
   };
 
   this.mousePressed = function() {
@@ -25,10 +24,6 @@ function Intro() {
       this.sceneManager.showScene(Game);
     }
   };
-
-  function myInputEvent() {
-    console.log('you are typing: ', this.value());
-  }
 
   function drawIntroScreen() {
     textSize(30);
@@ -41,17 +36,21 @@ function Intro() {
     // button = createButton('submit');
     // button.position(input.x + input.width, 65);
     // button.mousePressed(greet);
-
+  
     // greeting = createElement('h2', 'what is your name?');
     // greeting.position(20, 5);
-
+  
     // textAlign(CENTER);
     // textSize(50);
     // const name = input.value();
     // greeting.html('Cześć ' + name + '!');
     // input.value('');
 
-    text('W tym eksperymencie czekają na ciebie plansze, w każdej z nich musisz', width / 2, 100);
+    text(
+      'W tym eksperymencie czekają na ciebie plansze, w każdej z nich musisz',
+      width / 2,
+      100
+    );
     text(
       'kliknąć kursorem myszy na szary przycisk znajdujący się na obwodzie koła,',
       width / 2,

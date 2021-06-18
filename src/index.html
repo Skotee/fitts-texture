@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <title>Fitt's texture experiment</title>
@@ -12,12 +12,10 @@
 
     <!-- You can use open graph tags to customize link previews.
         Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
-    <meta property="og:url" content="https://github.com/vadimmarkov/webpack-es6-sass-boilerplate" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Webpack ES6+ Sass Boilerplate" />
     <meta
       property="og:description"
-      content="A minimalistic webpack 4 based boilerplate for building web apps"
+      content="A"
     />
     <meta property="og:image" content="https://webpack.js.org/icon_192x192.png" />
 
@@ -49,19 +47,90 @@
     <script src='src\lib\p5.js'></script>
     <script src='src\lib\p5.clickable.js'></script>
     <script src="src\lib\p5.scenemanager.js"></script>
-    <script src='src\game\startpoint.js'></script>
-    <script src='src\game\intro.js'></script>
-    <script src='src\game\config.js'></script>
-    <script src='src\game\game.js'></script>
-    <script src='src\game\gameover.js'></script>
-
   </head>
 
   <body>
-    <!-- <a href="/" class="logo">
-      <img src="images/logo.png" alt="Webpack ES6+ Sass Boilerplate" />
-    </a>
-    <h1>Webpack ES6+ Sass Boilerplate</h1> -->
+    <div id="pokequiz-app">
+        Radosław Wojaczek
+    </div>
+    <template id="quiz-template">
+      <form onsubmit="test()">
+        <h1>Witaj w eksperymencie prawa fittsa</h1>
+        <h3>Please take the test well rested</h3>
+        <h3>Please provide yourself good conditions</h3>
+        <h3>If you are wearing glasses, please, wear them for experiment</h3><br>
+
+        <label for="illnesses">Do you have any illnesses that interfere with your perception?</label><br>
+
+        <label for="yesillness">Yes</label><br>
+        <input required type="radio" id="yesillness" name="illnesses" value="yes"><br>
+        <label for="noillness">No</label><br>
+        <input type="radio" id="noillness" name="illnesses" value="no"><br><br>
+
+        <label for="drugs">Are you currently on drugs that affect perception?</label><br>
+
+        <label for="yesdrugs">Yes</label><br>
+        <input required type="radio" id="yesdrugs" name="drugs" value="yes"><br>
+        <label for="nodrugs">No</label><br>
+        <input type="radio" id="nodrugs" name="drugs" value="no"><br><br>
+
+
+        <label for="gender">Gender</label><br>
+
+        <label for="male">Male</label><br>
+        <input required type="radio" id="male" name="gender" value="male"><br>
+        <label for="female">Female</label><br>
+        <input type="radio" id="female" name="gender" value="female"><br>
+
+<!--
+jakiego używa wskaźnika (dropdown box)
+a także leków albo środków odurzających -->
+        <label for="fname">First name:</label><br>
+        <input pattern="[a-zA-Z]+" type="text" id="fname" name="fname"><br><br>
+
+        <label for="age">Age (between 18 and 100):</label><br>
+        <input type="number" id="age" class="age" name="age" min="15" max="100" step="1"><br><br>
+
+        <label for="screen">Size of screen (w calach)</label><br>
+        <input type="number" id="screen" name="screen" min="1" max="100"><br><br>
+
+        <label for="distance">Distance from screen (in cm)</label><br>
+        <input type="number" id="distance" name="distance" min="1" max="100" step="1"><br><br>
+
+        <!-- <label for="cars">Choose a car:</label>
+        <select name="cars" id="cars">
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+        </select> -->
+        <input type="submit" value="Submit" id='startGameButton'>
+      </form>       
+    </template>
+    <template id="dis">
+    </template>
   </body>
+  <script type="text/javascript">
+    function success() {
+      if(
+          document.getElementById("age").value==="" &&
+          document.getElementById("screen").value==="" &&
+          document.getElementById("distance").value==="" &&
+          document.getElementsByName("illnesses").value==="" &&
+          document.getElementsByName("drugs").value==="" &&
+          document.getElementsByName("gender").value===""
+        ) { 
+            document.getElementById('startGameButton').disabled = true; 
+          } else { 
+              document.getElementById('startGameButton').disabled = false;
+            }
+      }
+  </script>
+  <script src='src\game\startpoint.js'></script>
+  <script src='src\game\intro.js'></script>
+  <!-- <script src='src\game\form.js'></script> -->
+  <script src='src\game\config.js'></script>
+  <script defer src='src\game\game.js'></script>
+  <script src='src\game\gameover.js'></script>
 
 </html>

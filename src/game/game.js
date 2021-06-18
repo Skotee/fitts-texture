@@ -8,7 +8,7 @@ function Game() {
   const STEP_7 = 101;
   const STEP_8 = 116;
   const STEP_9 = 131;
-  const STEP_10 = 146;
+  const STEP_10 = 3;
 
   const BACKGROUND_00 = black;
   const BACKGROUND_01 = black;
@@ -43,6 +43,31 @@ function Game() {
   let timeTaken = 0;
   let bubbles = [];
   let backgrounds = [];
+  let fname = document.querySelector('#fname');
+  // let gender = document.querySelector('input[name="gender"]').value;
+  let screen = document.querySelector('#screen');
+  let screenDistance = document.querySelector('#distance');
+//   let quiz = document.querySelector('#quiz-template');
+
+// console.log('quiz-template', quiz);
+// let age = quiz.content.querySelector('#age').value
+
+
+
+
+  
+// const addAge = (ev) => {
+//   ev.preventDefault();
+//   let age = {
+//     age1: document.getElementById('age').value
+//   }
+//   arguments.push(age);
+//   console.warn('add', {ages});
+// }
+// document.addEventListener('DOOOOM', () => {
+//   document.getElementById('startGameButton', addAge);
+// })
+// console.log('age', age);
   let lapTimes = [];
   let distances = [];
   const predefinedDiameters = [
@@ -142,6 +167,7 @@ function Game() {
   this.enter = function() {
     textSize(12);
     textAlign(LEFT);
+    const appScreen = document.querySelector('#pokequiz-app');
     initGame();
   };
 
@@ -161,6 +187,11 @@ function Game() {
       console.log('bubbles:', bubbles);
       console.log('diameters:', diameters);
       console.log('coordinates:', coordinates);
+      console.log('age:', window.age);
+      // console.log('gender:', gender);
+      console.log('screen:', window.screen);
+      console.log('screenDistance:', window.screenDistance);
+      console.log('fname:', window.fname);
 
       function downloadExcel() {
         var tableHeaders = ['Bubble id', 'Time lapse', 'Distances', 'Diameter', 'Coordinates'];
@@ -186,6 +217,11 @@ function Game() {
         csvContent += distances + '\n';
         csvContent += diameters + '\n';
         csvContent += coordinates + '\n';
+        csvContent += age + '\n';
+        // csvContent += gender + '\n';
+        csvContent += screen + '\n';
+        csvContent += screenDistance + '\n';
+        csvContent += fname + '\n';
 
         //calling the csv download via anchor tag(link) so we can provide a name for the file
         var encodedUri = encodeURI(csvContent);
@@ -200,7 +236,7 @@ function Game() {
         link.remove(); //removing the link after the download
       }
 
-      rows = [[ids, lapTimes, distances, diameters, coordinates]];
+      rows = [[ids, lapTimes, distances, diameters, coordinates, age, screen, screenDistance, fname]];
 
       downloadExcel();
       // let csvContent = "data:text/csv;charset=utf-8,"
@@ -215,7 +251,6 @@ function Game() {
 
   function initGame() {
     getDiameterFromArray();
-
     for (let i = 1; i < STEP_10 + 1; i++) {
       bubbles[i - 1] = new Bubble(
         i,
