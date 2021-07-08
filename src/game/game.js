@@ -1,14 +1,14 @@
 function Game() {
-  const STEP_1 = 8;
-  const STEP_2 = 26;
-  const STEP_3 = 41;
-  const STEP_4 = 56;
-  const STEP_5 = 71;
-  const STEP_6 = 86;
-  const STEP_7 = 101;
-  const STEP_8 = 116;
-  const STEP_9 = 131;
-  const STEP_10 = 3;
+  const STEP_1 = 10;
+  const STEP_2 = STEP_1 + 15;
+  const STEP_3 = STEP_2 + 15;
+  const STEP_4 = STEP_3 + 15;
+  const STEP_5 = STEP_4 + 15;
+  const STEP_6 = STEP_5 + 15;
+  const STEP_7 = STEP_6 + 15;
+  const STEP_8 = STEP_7 + 15;
+  const STEP_9 = STEP_8 + 15;
+  const STEP_10 = STEP_9 + 17;
 
   const BACKGROUND_00 = black;
   const BACKGROUND_01 = black;
@@ -43,27 +43,7 @@ function Game() {
   let timeTaken = 0;
   let bubbles = [];
   let backgrounds = [];
-  let fname = document.querySelector('#fname');
-  // let gender = document.querySelector('input[name="gender"]').value;
-  let screen = document.querySelector('#screen');
-  let screenDistance = document.querySelector('#distance');
-  //   let quiz = document.querySelector('#quiz-template');
 
-  // console.log('quiz-template', quiz);
-  // let age = quiz.content.querySelector('#age').value
-
-  // const addAge = (ev) => {
-  //   ev.preventDefault();
-  //   let age = {
-  //     age1: document.getElementById('age').value
-  //   }
-  //   arguments.push(age);
-  //   console.warn('add', {ages});
-  // }
-  // document.addEventListener('DOOOOM', () => {
-  //   document.getElementById('startGameButton', addAge);
-  // })
-  // console.log('age', age);
   let lapTimes = [];
   let distances = [];
   const predefinedDiameters = [
@@ -129,13 +109,12 @@ function Game() {
         timeTaken = Date.now() - startTime;
         lapTimes.push(timeTaken);
         startTime = Date.now();
+        console.log('timeTaken', timeTaken);
 
-        diameters.push(this.diameter);
+        // diameters.push(this.diameter);
         bubbles.shift();
         backgrounds.shift();
         p++;
-        console.log('p:' + p);
-        console.log('bubbles.length:', bubbles.length);
       }
     }
 
@@ -163,7 +142,6 @@ function Game() {
   this.enter = function() {
     textSize(12);
     textAlign(LEFT);
-    const appScreen = document.querySelector('#pokequiz-app');
     initGame();
   };
 
@@ -174,74 +152,56 @@ function Game() {
       bubbles[0].show();
     } else {
       lapTimes.shift();
-      // save(lapTimes, 'my.txt');
-      // let rows = [];
 
-      console.log('ids:', ids);
-      console.log('lapTimes:', lapTimes);
-      console.log('distances:', distances);
-      console.log('bubbles:', bubbles);
-      console.log('diameters:', diameters);
-      console.log('coordinates:', coordinates);
-      console.log('age:', window.age);
-      // console.log('gender:', gender);
-      console.log('screen:', window.screen);
-      console.log('screenDistance:', window.screenDistance);
-      console.log('fname:', window.fname);
+      function uploadToFirebase() {
+        var firebaseConfig = {
+          apiKey: "AIzaSyCFS_9Xd58UY1ub8Wq8VtIJo5EBeSBBvqc",
+          authDomain: "fitts-law-faab1.firebaseapp.com",
+          databaseURL: "https://fitts-law-faab1.firebaseio.com",
+          projectId: "fitts-law-faab1",
+          storageBucket: "fitts-law-faab1.appspot.com",
+          messagingSenderId: "230890672188",
+          appId: "1:230890672188:web:4324ffec82fa9b1f043339",
+          measurementId: "G-X563BWFPQ6"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
 
-      function downloadExcel() {
-        var tableHeaders = ['Bubble id', 'Time lapse', 'Distances', 'Diameter', 'Coordinates'];
+        const d = new Date()
+        const date = d.getDate()
+        const year = d.getFullYear()
+        const month = ("0" + (d.getMonth() + 1)).slice(-2)
+        const day = (d.getDate() < 10 ? '0' : '') + d.getDate();
+        const hours = `${d.getHours()}`.padStart(2, '0')
+        const minutes = `${d.getMinutes()}`.padStart(2, '0')
+        const seconds = `${d.getSeconds()}`.padStart(2, '0')
+        const formatted = `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`
 
-        //now a container for the excel data i.e. tableHeaders+datacreated:
-        // var dataTable = new Array();
-        // dataTable.push(tableHeaders);
-
-        // //now looping around the data
-        // rows.forEach(function(col) {
-        //   dataTable.push([col,col, 'Feature Film', 'Feature Film', 'Feature Film']);
-        // });
-
-        //now converting the array given into a `csv` content
-        let csvContent = 'data:text/csv;charset=utf-8,';
-        // dataTable.forEach(function(rowArray) {
-        //   let row = rowArray.join('\n');
-        //   csvContent += row + '\t';
-        // });
-        csvContent += tableHeaders + '\n';
-        csvContent += ids + '\n';
-        csvContent += lapTimes + '\n';
-        csvContent += distances + '\n';
-        csvContent += diameters + '\n';
-        csvContent += coordinates + '\n';
-        csvContent += age + '\n';
-        // csvContent += gender + '\n';
-        csvContent += screen + '\n';
-        csvContent += screenDistance + '\n';
-        csvContent += fname + '\n';
-
-        //calling the csv download via anchor tag(link) so we can provide a name for the file
-        var encodedUri = encodeURI(csvContent);
-        var link = document.createElement('a');
-        link.setAttribute('href', encodedUri);
-        link.style.display = 'none';
-        link.setAttribute('download', 'myCSV.csv'); //change it to give your own name
-        link.innerHTML = 'Click Here to download';
-        document.body.appendChild(link); // Required for FF
-
-        link.click();
-        link.remove(); //removing the link after the download
+        var db = firebase.database();
+        var ref = db.ref(formatted);
+  
+        ref.set({
+          personalData: {
+            fname: window.fname,
+            age: window.age,
+            gender: window.gender,
+            pointerType: window.pointerType,
+            screenSize: window.screenSize,
+            screenDistance: window.screenDistance,
+            illnesses: window.illnesses,
+            drugs: window.drugs
+          },
+          experimentData: {
+            ids: ids,
+            lapTimes: lapTimes,
+            distances: distances,
+            diameters: diameters,
+            coordinates: coordinates
+          }
+        });
       }
 
-      rows = [
-        [ids, lapTimes, distances, diameters, coordinates, age, screen, screenDistance, fname],
-      ];
-
-      downloadExcel();
-      // let csvContent = "data:text/csv;charset=utf-8,"
-      //     + rows.map(e => e.join(",")).join("\n");
-      // let encodedUri = encodeURI(csvContent);
-      // // window.open(encodedUri);
-      // save(rows, 'my.txt');
+      uploadToFirebase();
 
       this.sceneManager.showScene(GameOver);
     }
@@ -297,7 +257,6 @@ function Game() {
       backgrounds[i] = BACKGROUND_9;
     }
     lapTimes = [];
-    console.log(bubbles);
 
     for (let i = 0; i < bubbles.length - 1; i++) {
       console.log(
@@ -323,16 +282,16 @@ function Game() {
         ).toFixed(2)
       );
     }
+    distances.pop()
     bubbles.forEach(element => {
       coordinates.push(element.centerX.toFixed(0) + ' ' + element.centerY.toFixed(0));
     });
-    // bubbles.forEach(element => {
-    //   ids.push(element.id)
-    // });
+    coordinates.pop();
     ids = bubbles.map(bubble => bubble.id);
+    ids.pop();
+    
     diameters = bubbles.map(bubble => bubble.diameter);
-
-    console.log('ids:', ids);
+    diameters.pop();
 
     function getRandomIntInclusive(min, max) {
       min = Math.ceil(min);

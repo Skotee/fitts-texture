@@ -9,7 +9,6 @@
 
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" href="favicon.ico" />
-
     <!-- You can use open graph tags to customize link previews.
         Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
     <meta property="og:type" content="website" />
@@ -18,119 +17,237 @@
       content="A"
     />
     <meta property="og:image" content="https://webpack.js.org/icon_192x192.png" />
-
     <meta name="theme-color" content="#fafafa" />
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-app.js"></script>
-
+    <!-- <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-app.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase.js"></script>
     <!-- TODO: Add SDKs for Firebase products that you want to use
         https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-analytics.js"></script>
-
-    <script>
-      // Your web app's Firebase configuration
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-      var firebaseConfig = {
-        apiKey: "AIzaSyCFS_9Xd58UY1ub8Wq8VtIJo5EBeSBBvqc",
-        authDomain: "fitts-law-faab1.firebaseapp.com",
-        databaseURL: "https://fitts-law-faab1.firebaseio.com",
-        projectId: "fitts-law-faab1",
-        storageBucket: "fitts-law-faab1.appspot.com",
-        messagingSenderId: "230890672188",
-        appId: "1:230890672188:web:4324ffec82fa9b1f043339",
-        measurementId: "G-X563BWFPQ6"
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
-    </script>
-    <script src='src\lib\p5.js'></script>
-    <script src='src\lib\p5.clickable.js'></script>
-    <script src="src\lib\p5.scenemanager.js"></script>
+    <script src='lib/p5.js'></script>
+    <script src='lib/p5.clickable.js'></script>
+    <script src="lib/p5.scenemanager.js"></script>
+    <style>
+      
+ html {
+	 height: 100%;
+}
+ #quiz-template {
+	 top: 50%;
+}
+ #fittslaw-app {
+	 width: 50%;
+}
+ body {
+	 align-items: center;
+	 display: flex;
+	 flex-direction: column;
+	 justify-content: center;
+	 min-height: 100%;
+	 background-color: #969696;
+	 animation: move 1s ease-in-out;
+}
+ body .introtext p {
+	 font-family: Arial, Helvetica, sans-serif;
+	 font-size: 15px;
+}
+ body .introtext .pl {
+	 font-family: Arial, Helvetica, sans-serif;
+	 font-size: 13px;
+	 font-style: italic;
+}
+ body .pl {
+	 font-family: Arial, Helvetica, sans-serif;
+	 font-size: 13px;
+	 font-style: italic;
+}
+ body .en {
+	 font-family: 'Times New Roman', Times, serif;
+	 font-size: 21px;
+}
+ body .wrap {
+	 height: 100%;
+	 display: flex;
+	 align-items: center;
+	 justify-content: center;
+}
+ body #startGameButton {
+	 width: 140px;
+	 height: 45px;
+	 font-family: 'Roboto', sans-serif;
+	 font-size: 11px;
+	 text-transform: uppercase;
+	 letter-spacing: 2.5px;
+	 font-weight: 500;
+	 color: #000;
+	 background-color: #fff;
+	 border: none;
+	 border-radius: 45px;
+	 box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+	 transition: all 0.3s ease 0s;
+	 cursor: pointer;
+	 outline: none;
+}
+ body #startGameButton:hover {
+	 background-color: #2ee59d;
+	 box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+	 color: #fff;
+	 transform: translateY(-7px);
+}
+ body .pl10 {
+	 padding-left: 30px;
+}
+ body .label-pl {
+	 font-size: 12px;
+}
+ @keyframes move {
+	 0% {
+		 opacity: 0;
+	}
+	 50% {
+		 opacity: 1;
+	}
+	 80% {
+		 opacity: 1;
+	}
+	 100% {
+		 opacity: 1;
+	}
+}
+ a {
+	 position: relative;
+	 background-position: center;
+	 background-repeat: no-repeat;
+	 display: inline-block;
+}
+ a img {
+	 display: inline-block;
+	 vertical-align: middle;
+	 width: 80px;
+}
+ .introtext {
+	 background: #ab97b8;
+	 background: linear-gradient(199deg, rgba(171, 151, 184, 1) 0%, rgba(241, 195, 195, 0.226) 50%, rgba(228, 213, 192, 1) 100%);
+	 border-radius: 30px;
+	 box-shadow: 1px 1px 20px 10px rgba(171, 151, 184, 1) 0%;
+	 padding: 20px 50px;
+	 margin-bottom: 10px;
+}
+ 
+      </style>
   </head>
 
   <body>
-    <div id="pokequiz-app">
+    <div id="fittslaw-app">
         Radosław Wojaczek
     </div>
     <template id="quiz-template">
-      <form onsubmit="test()">
-        <h1>Witaj w eksperymencie prawa fittsa</h1>
-        <h3>Please take the test well rested</h3>
-        <h3>Please provide yourself good conditions</h3>
-        <h3>If you are wearing glasses, please, wear them for experiment</h3><br>
+      <div class="introtext">
+        <h1>Welcome to Fitt's Law experiment</h1>
+        <ul class=en>
+          <li>Please take the test being well rested</li>
+          <li>Please provide yourself good conditions</li>
+          <li>If you wear glasses on daily basis, please put them on for experiment</li>
+        </ul>
+        <ul class=pl>
+          <li>Proszę podejść do testu wypoczętym</li>
+          <li>Zapewnij sobie dobre warunki do wykonania ćwiczenia</li>
+          <li>Jeśli używasz okularów na codzień, ubierz je na czas wykonywania eksperymentu</li>
+        </ul>
+       <br>
+        <p class=en>You are about to start an experiment concerning Fitts' Law.
+        <br> Your task is to click on the appearing circles in the shortest possible time.
+        <br> When you click, the location of circle and texture in the background may change.
+        <br> In order to better analyse the results, it is necessary to fill in the form below.</p>
+        <p class=pl>Za chwilę przystąpisz do eksperymentu dotyczącego Prawa Fittsa.
+        <br> Twoim zadaniem będzie klikanie na pojawiające się kółka w możliwie najkrótszym czasie. 
+        <br> W trakcie klikania tekstury które są na tle, będą się zmieniać.
+        <br> W celu lepszego sprofilowania wyników, koniecznym jest wypełnienie poniższego formularza.
+      </div>
+      <form onsubmit="test(event)">
+        <fieldset>
+          <p class="en">For experiment you will use mouse or touchpad (mouse is recommended)?</p>
+          <p class="pl">Czy do testu użyjesz myszy czy panelu dotykowego (zalecane jest użycie myszy)?</p>
+          <label for="mouse">Mouse</label>
+          <label for="mouse" class="label-pl">Mysz</label>
 
-        <label for="illnesses">Do you have any illnesses that interfere with your perception?</label><br>
+          <input required type="radio" id="mouse" name="pointerType" value="mouse">
 
-        <label for="yesillness">Yes</label><br>
-        <input required type="radio" id="yesillness" name="illnesses" value="yes"><br>
-        <label for="noillness">No</label><br>
-        <input type="radio" id="noillness" name="illnesses" value="no"><br><br>
+          <label for="touchpad" class="pl10">Touchpad</label>
+          <label for="touchpad" class="label-pl">Panel dotykowy</label>
+          <input required type="radio" id="touchpad" name="pointerType" value="touchpad"><br><br>
 
-        <label for="drugs">Are you currently on drugs that affect perception?</label><br>
+          <hr>
 
-        <label for="yesdrugs">Yes</label><br>
-        <input required type="radio" id="yesdrugs" name="drugs" value="yes"><br>
-        <label for="nodrugs">No</label><br>
-        <input type="radio" id="nodrugs" name="drugs" value="no"><br><br>
+          <p class="en">Do you have any illnesses that might interfere with your perception?</p>
+          <p class="pl">Czy doskwierają Tobie jakieś dolegliwości, które mają wpływ na Twoją percepcję?</p>
+          <label for="yesillness">Yes</label>
+          <label for="yesillness" class="label-pl">Tak</label>
 
+          <input required type="radio" id="yesillness" name="illnesses" value="yes">
 
-        <label for="gender">Gender</label><br>
+          <label for="noillness" class="pl10">No</label>
+          <label for="noillness" class="label-pl">Nie</label>
+          <input required type="radio" id="noillness" name="illnesses" value="no"><br><br>
 
-        <label for="male">Male</label><br>
-        <input required type="radio" id="male" name="gender" value="male"><br>
-        <label for="female">Female</label><br>
-        <input type="radio" id="female" name="gender" value="female"><br>
+          <hr>
 
-<!--
-jakiego używa wskaźnika (dropdown box)
-a także leków albo środków odurzających -->
-        <label for="fname">First name:</label><br>
-        <input pattern="[a-zA-Z]+" type="text" id="fname" name="fname"><br><br>
+          <p class="en">Are you currently on drugs that affect perception?</p>
+          <p class="pl">Czy przyjmujesz obecnie jakieś leki, które mają wpływ na percepcję?</p>
+          <label for="yesdrugs">Yes</label>
+          <label for="yesdrugs" class="label-pl">Tak</label>
 
-        <label for="age">Age (between 18 and 100):</label><br>
-        <input type="number" id="age" class="age" name="age" min="15" max="100" step="1"><br><br>
+          <input required type="radio" id="yesdrugs" name="drugs" value="yes">
 
-        <label for="screen">Size of screen (w calach)</label><br>
-        <input type="number" id="screen" name="screen" min="1" max="100"><br><br>
+          <label for="nodrugs" class="pl10">No</label>
+          <label for="nodrugs" class="label-pl">Nie</label>
+          <input required type="radio" id="nodrugs" name="drugs" value="no"><br><br>
 
-        <label for="distance">Distance from screen (in cm)</label><br>
-        <input type="number" id="distance" name="distance" min="1" max="100" step="1"><br><br>
+          <hr>
 
-        <!-- <label for="cars">Choose a car:</label>
-        <select name="cars" id="cars">
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
-        </select> -->
-        <input type="submit" value="Submit" id='startGameButton'>
+          <p class="en">Gender:</p>
+          <p class="pl">Płeć:</p>
+          <label for="male">Male</label>
+          <label for="male" class="label-pl">Mężczyzna</label>
+          <input required type="radio" id="male" name="gender" value="male">
+          <label for="female" class="pl10">Female</label>
+          <label for="female" class="label-pl">Kobieta</label>
+          <input required type="radio" id="female" name="gender" value="female"><br><br>
+
+          <hr>
+
+          <label for="fname" class="en">First name:</label><br>
+          <label for="fname" class="pl">Imię:</label><br>
+          <input required pattern="[a-zA-Z]+" type="text" id="fname" name="fname"><br><br>
+
+          <hr>
+
+          <label for="age" class="en">Age (between 18 and 100):</label><br>
+          <label for="age" class="pl">Wiek (pomiędzy 18 a 100 lat):</label><br>
+          <input required type="number" id="age" class="age" name="age" min="15" max="100" step="1"><br><br>
+
+          <hr>
+          
+          <label for="screenSize" class="en">Size of screen (in inches):</label><br>
+          <label for="screenSize" class="pl">Wielkość ekranu (w calach):</label><br>
+          <input required type="number" id="screenSize" name="screenSize" min="8" max="100" step="0.1"><br><br>
+
+          <hr>
+          
+          <label for="screenDistance" class="en">Distance from screen (in cm):</label><br>
+          <label for="screenDistance" class="pl"> Dystans od monitora (w centymetrach):</label><br>
+          <input required type="number" id="screenDistance" name="screenDistance" min="10" max="100" step="1"><br><br>
+          
+          <div class="wrap">
+            <input type="submit" value="Submit" id='startGameButton'>
+          </div>
+        </fieldset>
       </form>       
     </template>
     <template id="dis">
     </template>
   </body>
-  <script type="text/javascript">
-    function success() {
-      if(
-          document.getElementById("age").value==="" &&
-          document.getElementById("screen").value==="" &&
-          document.getElementById("distance").value==="" &&
-          document.getElementsByName("illnesses").value==="" &&
-          document.getElementsByName("drugs").value==="" &&
-          document.getElementsByName("gender").value===""
-        ) { 
-            document.getElementById('startGameButton').disabled = true; 
-          } else { 
-              document.getElementById('startGameButton').disabled = false;
-            }
-      }
-  </script>
-  <script src='src\game\startpoint.js'></script>
-  <script src='src\game\intro.js'></script>
-  <!-- <script src='src\game\form.js'></script> -->
-  <script src='src\game\config.js'></script>
-  <script defer src='src\game\game.js'></script>
-  <script src='src\game\gameover.js'></script>
-
+  <script src='game/startpoint.js'></script>
+  <script src='game/intro.js'></script>
+  <script defer src='game/game.js'></script>
+  <script src='game/gameover.js'></script>
 </html>

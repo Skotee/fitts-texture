@@ -8,20 +8,22 @@ function GameOver() {
 
   this.draw = function() {
     background(22), fill('white');
-    textSize(map(sin(frameCount * 0.1), 0, 1, 24, 32));
     textAlign(CENTER);
-    text('Koniec', width / 2, height / 2);
-    text('Dziękuję za wzięcie udziału w teście', width / 2, height / 2 + 40);
 
+    textSize(24);
+    textStyle(NORMAL);
+    text('Thank you for participating to experiment', width / 2, height / 2 - 30);
+
+    textSize(15);
+    textStyle(ITALIC);
+    text('Dziękuję za wzięcie udziału w teście', width / 2, height / 2 + 10);
+    
     textSize(20);
-    text('Radosław Wojaczek, praca magisterska', width / 2, height - 40);
-  };
+    textStyle(NORMAL);
+    text('Radosław Wojaczek, master thesis 2021', width / 2, height - 60);
 
-  this.keyPressed = function() {
-    this.sceneManager.showScene(Intro);
-  };
-
-  this.mousePressed = function() {
-    this.sceneManager.showScene(Intro);
+    textSize(15);
+    textStyle(ITALIC);
+    text('Radosław Wojaczek, praca magisterska 2021', width / 2, height - 30);
   };
 }

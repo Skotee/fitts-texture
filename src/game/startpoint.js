@@ -26,43 +26,46 @@ let black,
   wood6;
 
 function preload() {
-  oulu1 = loadImage('src/assets/oulu1.bmp');
-  oulu2 = loadImage('src/assets/oulu2.bmp');
-  oulu3 = loadImage('src/assets/oulu3.bmp');
-  stars2 = loadImage('src/assets/stars2.png');
-  stars4 = loadImage('src/assets/stars4.png');
-  stars6 = loadImage('src/assets/stars6.png');
-  wood3 = loadImage('src/assets/wood3.png');
-  wood4 = loadImage('src/assets/wood4.png');
-  wood6 = loadImage('src/assets/wood6.png');
-  graycircle50 = loadImage('src/assets/graycrop50.png');
-  graycircle70 = loadImage('src/assets/graycrop70.png');
-  graycircle80 = loadImage('src/assets/graycrop80.png');
-  graycircle100 = loadImage('src/assets/graycrop100.png');
-  graycircle110 = loadImage('src/assets/graycrop110.png');
-  graycircle120 = loadImage('src/assets/graycrop120.png');
-  graycircle150 = loadImage('src/assets/graycrop150.png');
-  black = loadImage('src/assets/black.png');
-  white = loadImage('src/assets/white.png');
+  oulu1 = loadImage('images/oulu1.bmp');
+  oulu2 = loadImage('images/oulu2.bmp');
+  oulu3 = loadImage('images/oulu3.bmp');
+  stars2 = loadImage('images/stars2.png');
+  stars4 = loadImage('images/stars4.png');
+  stars6 = loadImage('images/stars6.png');
+  wood3 = loadImage('images/wood3.png');
+  wood4 = loadImage('images/wood4.png');
+  wood6 = loadImage('images/wood6.png');
+  graycircle50 = loadImage('images/graycrop50.png');
+  graycircle70 = loadImage('images/graycrop70.png');
+  graycircle80 = loadImage('images/graycrop80.png');
+  graycircle100 = loadImage('images/graycrop100.png');
+  graycircle110 = loadImage('images/graycrop110.png');
+  graycircle120 = loadImage('images/graycrop120.png');
+  graycircle150 = loadImage('images/graycrop150.png');
+  black = loadImage('images/black.png');
+  white = loadImage('images/white.png');
 }
 
-function test() {
-  event.preventDefault();
+function test(e) {
+  e.preventDefault();
   window.age = document.querySelector('#age').value;
   window.fname = document.querySelector('#fname').value;
-  window.screen = document.querySelector('#screen').value;
-  window.distance = document.querySelector('#distance').value;
-  window.illnesses = document.getElementsByName('#illnesses').value;
-  window.drugs = document.getElementsByName('drugs').value;
-  window.gender = document.getElementsByName('gender').value;
+  window.screenSize = document.querySelector('#screenSize').value;
+  window.screenDistance = document.querySelector('#screenDistance').value;
+  window.pointerType = document.querySelector('input[name="pointerType"]:checked').value;
+  window.illnesses = document.querySelector('input[name="illnesses"]:checked').value;
+  window.drugs = document.querySelector('input[name="drugs"]:checked').value;
+  window.gender = document.querySelector('input[name="gender"]:checked').value;
 
-  console.log('age', age);
   console.log('fname', fname);
-  console.log('screen', screen);
-  console.log('distance', distance);
+  console.log('age', age);
+  console.log('gender', gender);
+  console.log('pointerType', pointerType);
+  console.log('screenSize', screenSize);
+  console.log('screenDistance', screenDistance);
   console.log('illnesses', illnesses);
   console.log('drugs', drugs);
-  console.log('gender', gender);
+
   createCanvas(canvasWidth, canvasHeight);
   var mgr = new SceneManager();
   mgr.wire();
@@ -70,7 +73,7 @@ function test() {
 }
 
 function setup() {
-  const appScreen = document.querySelector('#pokequiz-app');
+  const appScreen = document.querySelector('#fittslaw-app');
   const quizTemplate = document.getElementById('quiz-template');
   appScreen.innerHTML = quizTemplate.innerHTML;
 }
