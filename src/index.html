@@ -28,111 +28,132 @@
     <script src="lib/p5.scenemanager.js"></script>
     <style>
       
- html {
-	 height: 100%;
-}
- #quiz-template {
-	 top: 50%;
-}
- #fittslaw-app {
-	 width: 50%;
-}
- body {
-	 align-items: center;
-	 display: flex;
-	 flex-direction: column;
-	 justify-content: center;
-	 min-height: 100%;
-	 background-color: #969696;
-	 animation: move 1s ease-in-out;
-}
- body .introtext p {
-	 font-family: Arial, Helvetica, sans-serif;
-	 font-size: 15px;
-}
- body .introtext .pl {
-	 font-family: Arial, Helvetica, sans-serif;
-	 font-size: 13px;
-	 font-style: italic;
-}
- body .pl {
-	 font-family: Arial, Helvetica, sans-serif;
-	 font-size: 13px;
-	 font-style: italic;
-}
- body .en {
-	 font-family: 'Times New Roman', Times, serif;
-	 font-size: 21px;
-}
- body .wrap {
-	 height: 100%;
-	 display: flex;
-	 align-items: center;
-	 justify-content: center;
-}
- body #startGameButton {
-	 width: 140px;
-	 height: 45px;
-	 font-family: 'Roboto', sans-serif;
-	 font-size: 11px;
-	 text-transform: uppercase;
-	 letter-spacing: 2.5px;
-	 font-weight: 500;
-	 color: #000;
-	 background-color: #fff;
-	 border: none;
-	 border-radius: 45px;
-	 box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-	 transition: all 0.3s ease 0s;
-	 cursor: pointer;
-	 outline: none;
-}
- body #startGameButton:hover {
-	 background-color: #2ee59d;
-	 box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-	 color: #fff;
-	 transform: translateY(-7px);
-}
- body .pl10 {
-	 padding-left: 30px;
-}
- body .label-pl {
-	 font-size: 12px;
-}
- @keyframes move {
-	 0% {
-		 opacity: 0;
-	}
-	 50% {
-		 opacity: 1;
-	}
-	 80% {
-		 opacity: 1;
-	}
-	 100% {
-		 opacity: 1;
-	}
-}
- a {
-	 position: relative;
-	 background-position: center;
-	 background-repeat: no-repeat;
-	 display: inline-block;
-}
- a img {
-	 display: inline-block;
-	 vertical-align: middle;
-	 width: 80px;
-}
- .introtext {
-	 background: #ab97b8;
-	 background: linear-gradient(199deg, rgba(171, 151, 184, 1) 0%, rgba(241, 195, 195, 0.226) 50%, rgba(228, 213, 192, 1) 100%);
-	 border-radius: 30px;
-	 box-shadow: 1px 1px 20px 10px rgba(171, 151, 184, 1) 0%;
-	 padding: 20px 50px;
-	 margin-bottom: 10px;
-}
- 
+      html {
+        height: 100%;
+      }
+      #quiz-template {
+        top: 50%;
+      }
+      #fittslaw-app {
+        width: 50%;
+      }
+      body {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 100%;
+        background-color: #969696;
+        animation: move 1s ease-in-out;
+      }
+      body .introtext p {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 15px;
+      }
+      body .introtext .pl {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 13px;
+        font-style: italic;
+      }
+      body .pl {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 13px;
+        font-style: italic;
+      }
+      body .en {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 21px;
+      }
+      body .wrap {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      body #startGameButton {
+        width: 140px;
+        height: 45px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        font-weight: 500;
+        color: #000;
+        background-color: #fff;
+        border: none;
+        border-radius: 45px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease 0s;
+        cursor: pointer;
+        outline: none;
+      }
+      body #startGameButton:hover {
+        background-color: #2ee59d;
+        box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+        color: #fff;
+        transform: translateY(-7px);
+      }
+      body .pl10 {
+        padding-left: 30px;
+      }
+      body .label-pl {
+        font-size: 12px;
+      }
+      @keyframes move {
+        0% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        80% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      a {
+        position: relative;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: inline-block;
+      }
+      a img {
+        display: inline-block;
+        vertical-align: middle;
+        width: 80px;
+      }
+      .introtext {
+        background: #ab97b8;
+        background: linear-gradient(199deg, rgba(171, 151, 184, 1) 0%, rgba(241, 195, 195, 0.226) 50%, rgba(228, 213, 192, 1) 100%);
+        border-radius: 30px;
+        box-shadow: 1px 1px 20px 10px rgba(171, 151, 184, 1) 0%;
+        padding: 20px 50px;
+        margin-bottom: 10px;
+      }
+      
+      /* .twocolumns {
+        column-count: 2;
+      } */
+      
+      .twocolumns {
+        padding-top: 15px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+      }
+
+      .ubadawcza {
+        width: 25%;
+      }
+
+      .polsl {
+        padding-right: 10px;
+        width: 30%;
+
+      }
+
       </style>
   </head>
 
@@ -141,6 +162,10 @@
         Radosław Wojaczek
     </div>
     <template id="quiz-template">
+      <div class="twocolumns">
+        <img class="logo polsl" src="images/polsl.jpg"></img>
+        <img class="logo ubadawcza" src="images/ubadawcza.jpg"></img>
+      </div>
       <div class="introtext">
         <h1>Welcome to Fitt's Law experiment</h1>
         <ul class=en>
@@ -155,13 +180,17 @@
         </ul>
        <br>
         <p class=en>You are about to start an experiment concerning Fitts' Law.
-        <br> Your task is to click on the appearing circles in the shortest possible time.
-        <br> When you click, the location of circle and texture in the background may change.
-        <br> In order to better analyse the results, it is necessary to fill in the form below.</p>
+          <br> Your task is to click on the appearing circles in the shortest possible time.
+          <br> When you click, the location of circle and texture in the background may change.
+          <br> In order to better analyse the results, it is necessary to fill in the form below.
+          <br> Experiment lasts for 5-6 minutes
+        </p>
         <p class=pl>Za chwilę przystąpisz do eksperymentu dotyczącego Prawa Fittsa.
-        <br> Twoim zadaniem będzie klikanie na pojawiające się kółka w możliwie najkrótszym czasie. 
-        <br> W trakcie klikania tekstury które są na tle, będą się zmieniać.
-        <br> W celu lepszego sprofilowania wyników, koniecznym jest wypełnienie poniższego formularza.
+          <br> Twoim zadaniem będzie klikanie na pojawiające się kółka w możliwie najkrótszym czasie. 
+          <br> W trakcie klikania tekstury, które stanowią tło aplikacji, będą się zmieniać.
+          <br> W celu lepszego sprofilowania wyników, koniecznym jest wypełnienie poniższego formularza.
+          <br> Badanie potrwa około 5-6 minut 
+        </p>
       </div>
       <form onsubmit="test(event)">
         <fieldset>
@@ -215,15 +244,22 @@
 
           <hr>
 
-          <label for="fname" class="en">First name:</label><br>
-          <label for="fname" class="pl">Imię:</label><br>
-          <input required pattern="[a-zA-Z]+" type="text" id="fname" name="fname"><br><br>
-
-          <hr>
-
-          <label for="age" class="en">Age (between 18 and 100):</label><br>
-          <label for="age" class="pl">Wiek (pomiędzy 18 a 100 lat):</label><br>
-          <input required type="number" id="age" class="age" name="age" min="15" max="100" step="1"><br><br>
+          <p class="en">Age range:</p>
+          <p class="pl">Przedział wiekowy:</p>
+          <label for="below18">Below 18 years old</label>
+          <label for="below18" class="label-pl">Poniżej 18 lat</label>
+          <input required type="radio" id="below18" name="age" value="below18"><br><br>
+          <label for="1826">18-26</label>
+          <input required type="radio" id="1826" name="age" value="1826"><br><br>
+          <label for="2735">27-35</label>
+          <input required type="radio" id="2735" name="age" value="2735"><br><br>
+          <label for="3644">36-44</label>
+          <input required type="radio" id="3644" name="age" value="3644"><br><br>
+          <label for="4560">45-60</label>
+          <input required type="radio" id="4560" name="age" value="4560"><br><br>
+          <label for="over60">Over 60</label>
+          <label for="over60" class="label-pl">Powyżej 60 lat</label>
+          <input required type="radio" id="over60" name="age" value="over60"><br><br>
 
           <hr>
           

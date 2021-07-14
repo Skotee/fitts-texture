@@ -29,11 +29,6 @@ function Intro() {
     text('Po kliknięciu na poniższy przycisk zacznie się eksperyment', width / 2, 160);
     textStyle(NORMAL);
 
- 
-    // text('', width / 2, 190);
-    // fill('green');
-    // text('Proszę o użycie myszki lub touchpada do realizacji tego eksperymentu', width / 2, 320);
-
     var sizeFactor = 1 + cos(2 * frameCount) * 0.3;
     textSize(sizeFactor * 30);
     fill('Black');

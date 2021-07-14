@@ -1,5 +1,8 @@
 function Game() {
   const STEP_1 = 10;
+  // for (let i = 1; i < 18; i++) {
+  //   STEP_`i`+1 = STEP_`i` + 15;
+  // }
   const STEP_2 = STEP_1 + 15;
   const STEP_3 = STEP_2 + 15;
   const STEP_4 = STEP_3 + 15;
@@ -8,7 +11,16 @@ function Game() {
   const STEP_7 = STEP_6 + 15;
   const STEP_8 = STEP_7 + 15;
   const STEP_9 = STEP_8 + 15;
-  const STEP_10 = STEP_9 + 17;
+  const STEP_10 = STEP_9 + 15;
+  const STEP_11 = STEP_10 + 15;
+  const STEP_12 = STEP_11 + 15;
+  const STEP_13 = STEP_12 + 15;
+  const STEP_14 = STEP_13 + 15;
+  const STEP_15 = STEP_14 + 15;
+  const STEP_16 = STEP_15 + 15;
+  const STEP_17 = STEP_16 + 15;
+  //pętla do tego momentu
+  const STEP_18 = STEP_17 + 17;
 
   const BACKGROUND_00 = black;
   const BACKGROUND_01 = black;
@@ -21,15 +33,24 @@ function Game() {
   const BACKGROUND_08 = black;
   const BACKGROUND_09 = white;
 
-  const BACKGROUND_1 = stars2;
-  const BACKGROUND_2 = stars4;
-  const BACKGROUND_3 = stars6;
-  const BACKGROUND_4 = oulu1;
-  const BACKGROUND_5 = oulu2;
-  const BACKGROUND_6 = oulu3;
-  const BACKGROUND_7 = wood3;
-  const BACKGROUND_8 = wood4;
-  const BACKGROUND_9 = wood6;
+  const BACKGROUND_1 = texture11;
+  const BACKGROUND_2 = texture12;
+  const BACKGROUND_3 = texture13;
+  const BACKGROUND_4 = texture21;
+  const BACKGROUND_5 = texture22;
+  const BACKGROUND_6 = texture23;
+  const BACKGROUND_7 = texture31;
+  const BACKGROUND_8 = texture32;
+  const BACKGROUND_9 = texture33;
+  const BACKGROUND_10 = texture41;
+  const BACKGROUND_11 = texture41;
+  const BACKGROUND_12 = texture42;
+  const BACKGROUND_13 = texture43;
+  const BACKGROUND_14 = texture51;
+  const BACKGROUND_15 = texture52;
+  const BACKGROUND_16 = texture53;
+  const BACKGROUND_17 = textureLetters;
+
 
   const PREDEFINED_DIAMETER_1 = 50;
   const PREDEFINED_DIAMETER_2 = 70;
@@ -75,9 +96,6 @@ function Game() {
     graycircle150: graycircle150,
   };
 
-  // ja bym te wszystkie obiekty trzymał w jakimś nadrzędnym obiecie,
-  // i wtedy łatwo się tworzy dynamiczne klucze dla tego obiektu
-
   class Bubble {
     constructor(id, angle, image, diameter) {
       this.id = id;
@@ -102,14 +120,13 @@ function Game() {
       ) {
         if (!Array.isArray(lapTimes) || !lapTimes.length) {
           //jesli tablica jest pusta -> kliknięte jest pierwsze kółko
-          console.log('Start licznika');
           startTime = Date.now();
         }
         /* Lap time is total time minus previous lap time */
         timeTaken = Date.now() - startTime;
         lapTimes.push(timeTaken);
         startTime = Date.now();
-        console.log('timeTaken', timeTaken);
+        // console.log('timeTaken', timeTaken);
 
         // diameters.push(this.diameter);
         bubbles.shift();
@@ -182,7 +199,6 @@ function Game() {
   
         ref.set({
           personalData: {
-            fname: window.fname,
             age: window.age,
             gender: window.gender,
             pointerType: window.pointerType,
@@ -209,7 +225,7 @@ function Game() {
 
   function initGame() {
     getDiameterFromArray();
-    for (let i = 1; i < STEP_10 + 1; i++) {
+    for (let i = 1; i < STEP_18 + 1; i++) {
       bubbles[i - 1] = new Bubble(
         i,
         getRandomIntInclusive(0, 360),
@@ -228,6 +244,12 @@ function Game() {
     backgrounds[7] = BACKGROUND_07;
     backgrounds[8] = BACKGROUND_08;
     backgrounds[9] = BACKGROUND_09;
+
+    // for (let j = 1; j < 18; j++) {
+    //   for (let i = STEP_`j`; i < STEP_`j+1`; i++) {
+    //     backgrounds[i] = BACKGROUND_1;
+    //   }
+    // }
 
     for (let i = STEP_1; i < STEP_2; i++) {
       backgrounds[i] = BACKGROUND_1;
@@ -256,19 +278,44 @@ function Game() {
     for (let i = STEP_9; i < STEP_10; i++) {
       backgrounds[i] = BACKGROUND_9;
     }
+    for (let i = STEP_10; i < STEP_11; i++) {
+      backgrounds[i] = BACKGROUND_10;
+    }
+    for (let i = STEP_11; i < STEP_12; i++) {
+      backgrounds[i] = BACKGROUND_11;
+    }
+    for (let i = STEP_12; i < STEP_13; i++) {
+      backgrounds[i] = BACKGROUND_12;
+    }
+    for (let i = STEP_13; i < STEP_14; i++) {
+      backgrounds[i] = BACKGROUND_13;
+    }
+    for (let i = STEP_14; i < STEP_15; i++) {
+      backgrounds[i] = BACKGROUND_14;
+    }
+    for (let i = STEP_15; i < STEP_16; i++) {
+      backgrounds[i] = BACKGROUND_15;
+    }
+    for (let i = STEP_16; i < STEP_17; i++) {
+      backgrounds[i] = BACKGROUND_16;
+    }
+    for (let i = STEP_17; i < STEP_18; i++) {
+      backgrounds[i] = BACKGROUND_17;
+    }
+
     lapTimes = [];
 
     for (let i = 0; i < bubbles.length - 1; i++) {
-      console.log(
-        i +
-          ' ' +
-          dist(
-            bubbles[i].centerX,
-            bubbles[i].centerY,
-            bubbles[i + 1].centerX,
-            bubbles[i + 1].centerY
-          ).toFixed(2)
-      );
+      // console.log(
+      //   i +
+      //     ' ' +
+      //     dist(
+      //       bubbles[i].centerX,
+      //       bubbles[i].centerY,
+      //       bubbles[i + 1].centerX,
+      //       bubbles[i + 1].centerY
+      //     ).toFixed(2)
+      // );
       distances.push(
         (
           dist(

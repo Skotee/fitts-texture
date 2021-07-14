@@ -26,15 +26,23 @@ let black,
   wood6;
 
 function preload() {
-  oulu1 = loadImage('images/oulu1.bmp');
-  oulu2 = loadImage('images/oulu2.bmp');
-  oulu3 = loadImage('images/oulu3.bmp');
-  stars2 = loadImage('images/stars2.png');
-  stars4 = loadImage('images/stars4.png');
-  stars6 = loadImage('images/stars6.png');
-  wood3 = loadImage('images/wood3.png');
-  wood4 = loadImage('images/wood4.png');
-  wood6 = loadImage('images/wood6.png');
+  texture11 = loadImage('images/11.jpg');
+  texture12 = loadImage('images/12.jpg');
+  texture13 = loadImage('images/13.jpg');
+  texture21 = loadImage('images/21.jpg');
+  texture22 = loadImage('images/22.jpg');
+  texture23 = loadImage('images/23.jpg');
+  texture31 = loadImage('images/31.jpg');
+  texture32 = loadImage('images/32.jpg');
+  texture33 = loadImage('images/33.jpg');
+  texture41 = loadImage('images/41.jpg');
+  texture42 = loadImage('images/42.jpg');
+  texture43 = loadImage('images/43.jpg');
+  texture51 = loadImage('images/51.jpg');
+  texture52 = loadImage('images/52.jpg');
+  texture53 = loadImage('images/53.jpg');
+  textureLetters = loadImage('images/litery.jpg');
+
   graycircle50 = loadImage('images/graycrop50.png');
   graycircle70 = loadImage('images/graycrop70.png');
   graycircle80 = loadImage('images/graycrop80.png');
@@ -48,8 +56,7 @@ function preload() {
 
 function test(e) {
   e.preventDefault();
-  window.age = document.querySelector('#age').value;
-  window.fname = document.querySelector('#fname').value;
+  window.age = document.querySelector('input[name="age"]:checked').value;
   window.screenSize = document.querySelector('#screenSize').value;
   window.screenDistance = document.querySelector('#screenDistance').value;
   window.pointerType = document.querySelector('input[name="pointerType"]:checked').value;
@@ -57,14 +64,13 @@ function test(e) {
   window.drugs = document.querySelector('input[name="drugs"]:checked').value;
   window.gender = document.querySelector('input[name="gender"]:checked').value;
 
-  console.log('fname', fname);
-  console.log('age', age);
-  console.log('gender', gender);
-  console.log('pointerType', pointerType);
-  console.log('screenSize', screenSize);
-  console.log('screenDistance', screenDistance);
-  console.log('illnesses', illnesses);
-  console.log('drugs', drugs);
+  // console.log('age', age);
+  // console.log('gender', gender);
+  // console.log('pointerType', pointerType);
+  // console.log('screenSize', screenSize);
+  // console.log('screenDistance', screenDistance);
+  // console.log('illnesses', illnesses);
+  // console.log('drugs', drugs);
 
   createCanvas(canvasWidth, canvasHeight);
   var mgr = new SceneManager();
