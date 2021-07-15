@@ -18,9 +18,8 @@ function Game() {
   const STEP_14 = STEP_13 + 15;
   const STEP_15 = STEP_14 + 15;
   const STEP_16 = STEP_15 + 15;
-  const STEP_17 = STEP_16 + 15;
+  const STEP_17 = STEP_16 + 17;
   //pętla do tego momentu
-  const STEP_18 = STEP_17 + 17;
 
   const BACKGROUND_00 = black;
   const BACKGROUND_01 = black;
@@ -43,13 +42,12 @@ function Game() {
   const BACKGROUND_8 = texture32;
   const BACKGROUND_9 = texture33;
   const BACKGROUND_10 = texture41;
-  const BACKGROUND_11 = texture41;
-  const BACKGROUND_12 = texture42;
-  const BACKGROUND_13 = texture43;
-  const BACKGROUND_14 = texture51;
-  const BACKGROUND_15 = texture52;
-  const BACKGROUND_16 = texture53;
-  const BACKGROUND_17 = textureLetters;
+  const BACKGROUND_11 = texture42;
+  const BACKGROUND_12 = texture43;
+  const BACKGROUND_13 = texture51;
+  const BACKGROUND_14 = texture52;
+  const BACKGROUND_15 = texture53;
+  const BACKGROUND_16 = textureLetters;
 
 
   const PREDEFINED_DIAMETER_1 = 50;
@@ -82,7 +80,7 @@ function Game() {
   let coordinates = [];
   let ids = [];
   const boardRadius = 250;
-  let distance = 0;
+
   let p = 0;
   const angleConversion = Math.PI / 180;
 
@@ -122,6 +120,7 @@ function Game() {
           //jesli tablica jest pusta -> kliknięte jest pierwsze kółko
           startTime = Date.now();
         }
+        console.log();
         /* Lap time is total time minus previous lap time */
         timeTaken = Date.now() - startTime;
         lapTimes.push(timeTaken);
@@ -225,7 +224,7 @@ function Game() {
 
   function initGame() {
     getDiameterFromArray();
-    for (let i = 1; i < STEP_18 + 1; i++) {
+    for (let i = 1; i < STEP_17 + 1; i++) {
       bubbles[i - 1] = new Bubble(
         i,
         getRandomIntInclusive(0, 360),
@@ -299,9 +298,6 @@ function Game() {
     for (let i = STEP_16; i < STEP_17; i++) {
       backgrounds[i] = BACKGROUND_16;
     }
-    for (let i = STEP_17; i < STEP_18; i++) {
-      backgrounds[i] = BACKGROUND_17;
-    }
 
     lapTimes = [];
 
@@ -347,7 +343,7 @@ function Game() {
     }
 
     function getDiameterFromArray() {
-      for (let index = 0; index < 150; index++) {
+      for (let index = 0; index < STEP_17 + 1; index++) {
         selectedPredefinedDiameters.push(
           predefinedDiameters[Math.floor(Math.random() * predefinedDiameters.length)]
         );
