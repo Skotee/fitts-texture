@@ -3,22 +3,22 @@ function Game() {
   // for (let i = 1; i < 18; i++) {
   //   STEP_`i`+1 = STEP_`i` + 15;
   // }
-  const STEP_2 = STEP_1 + 15;
-  const STEP_3 = STEP_2 + 15;
-  const STEP_4 = STEP_3 + 15;
-  const STEP_5 = STEP_4 + 15;
-  const STEP_6 = STEP_5 + 15;
-  const STEP_7 = STEP_6 + 15;
-  const STEP_8 = STEP_7 + 15;
-  const STEP_9 = STEP_8 + 15;
-  const STEP_10 = STEP_9 + 15;
-  const STEP_11 = STEP_10 + 15;
-  const STEP_12 = STEP_11 + 15;
-  const STEP_13 = STEP_12 + 15;
-  const STEP_14 = STEP_13 + 15;
-  const STEP_15 = STEP_14 + 15;
-  const STEP_16 = STEP_15 + 15;
-  const STEP_17 = STEP_16 + 17;
+  const STEP_2 = STEP_1 + 16;
+  const STEP_3 = STEP_2 + 16;
+  const STEP_4 = STEP_3 + 16;
+  const STEP_5 = STEP_4 + 16;
+  const STEP_6 = STEP_5 + 16;
+  const STEP_7 = STEP_6 + 16;
+  const STEP_8 = STEP_7 + 16;
+  const STEP_9 = STEP_8 + 16;
+  const STEP_10 = STEP_9 + 16;
+  const STEP_11 = STEP_10 + 16;
+  const STEP_12 = STEP_11 + 16;
+  const STEP_13 = STEP_12 + 16;
+  const STEP_14 = STEP_13 + 16;
+  const STEP_15 = STEP_14 + 16;
+  const STEP_16 = STEP_15 + 16;
+  const STEP_17 = STEP_16 + 18;
   //pętla do tego momentu
 
   const BACKGROUND_00 = black;
