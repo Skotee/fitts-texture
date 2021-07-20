@@ -9,12 +9,18 @@ function Game() {
   const STEP_5 = STEP_4 + 16;
   const STEP_6 = STEP_5 + 16;
   const STEP_7 = STEP_6 + 16;
-  const STEP_8 = STEP_7 + 16;
+
+  const BREAK_1 = STEP_7 + 1;
+
+  const STEP_8 = BREAK_1 + 16;
   const STEP_9 = STEP_8 + 16;
   const STEP_10 = STEP_9 + 16;
   const STEP_11 = STEP_10 + 16;
   const STEP_12 = STEP_11 + 16;
-  const STEP_13 = STEP_12 + 16;
+
+  const BREAK_2 = STEP_12 + 1;
+
+  const STEP_13 = BREAK_2 + 16;
   const STEP_14 = STEP_13 + 16;
   const STEP_15 = STEP_14 + 16;
   const STEP_16 = STEP_15 + 16;
@@ -48,7 +54,7 @@ function Game() {
   const BACKGROUND_14 = texture52;
   const BACKGROUND_15 = texture53;
   const BACKGROUND_16 = textureLetters;
-
+  const BACKGROUND_BREAK = texture_break;
 
   const PREDEFINED_DIAMETER_1 = 50;
   const PREDEFINED_DIAMETER_2 = 70;
@@ -120,13 +126,11 @@ function Game() {
           //jesli tablica jest pusta -> kliknięte jest pierwsze kółko
           startTime = Date.now();
         }
-        console.log();
         /* Lap time is total time minus previous lap time */
         timeTaken = Date.now() - startTime;
         lapTimes.push(timeTaken);
         startTime = Date.now();
         // console.log('timeTaken', timeTaken);
-
         // diameters.push(this.diameter);
         bubbles.shift();
         backgrounds.shift();
@@ -268,7 +272,14 @@ function Game() {
     for (let i = STEP_6; i < STEP_7; i++) {
       backgrounds[i] = BACKGROUND_6;
     }
-    for (let i = STEP_7; i < STEP_8; i++) {
+
+    ////////////////////////////////////
+    for (let i = STEP_7; i < BREAK_1; i++) {
+      backgrounds[i] = BACKGROUND_BREAK;
+    }
+    ////////////////////////////////////
+
+    for (let i = BREAK_1; i < STEP_8; i++) {
       backgrounds[i] = BACKGROUND_7;
     }
     for (let i = STEP_8; i < STEP_9; i++) {
@@ -283,7 +294,14 @@ function Game() {
     for (let i = STEP_11; i < STEP_12; i++) {
       backgrounds[i] = BACKGROUND_11;
     }
-    for (let i = STEP_12; i < STEP_13; i++) {
+    
+    ////////////////////////////////////
+    for (let i = STEP_12; i < BREAK_2; i++) {
+      backgrounds[i] = BACKGROUND_BREAK;
+    }
+    ////////////////////////////////////
+    
+    for (let i = BREAK_2; i < STEP_13; i++) {
       backgrounds[i] = BACKGROUND_12;
     }
     for (let i = STEP_13; i < STEP_14; i++) {

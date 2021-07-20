@@ -42,6 +42,8 @@ function preload() {
   texture52 = loadImage('images/52.jpg');
   texture53 = loadImage('images/53.jpg');
   textureLetters = loadImage('images/litery.jpg');
+  texture_break = loadImage('images/break.png');
+
 
   graycircle50 = loadImage('images/graycrop50.png');
   graycircle70 = loadImage('images/graycrop70.png');
